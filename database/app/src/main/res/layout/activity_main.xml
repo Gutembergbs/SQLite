@@ -1,130 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!-- Campo de entrada para o nome -->
+    <!-- Campo de entrada para nome -->
     <EditText
         android:id="@+id/enterName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Entre Nome"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:hint="Nome"
+        android:inputType="text"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="32dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_margin="16dp" />
 
-    <!-- Campo de entrada para a idade -->
+    <!-- Campo de entrada para idade -->
     <EditText
         android:id="@+id/enterAge"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:hint="Idade"
         android:inputType="number"
-        android:hint="Entre idade"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enterName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/enterName"
-        android:layout_marginTop="16dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp" />
 
-    <!-- Botão para adicionar nome e idade ao banco de dados -->
+    <!-- Botão para adicionar nome e idade -->
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="ADICIONAR NOME"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
+        android:text="Adicionar"
+        android:onClick="addName"
+        app:layout_constraintTop_toBottomOf="@+id/enterAge"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/enterAge"
-        app:layout_constraintHorizontal_bias="0.387"
-        android:onClick="addName"/>
-
-    <!-- Botão para imprimir os dados salvos no banco de dados -->
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="IMPRIMIR NOME"
-        app:layout_constraintStart_toEndOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/enterAge"
-        app:layout_constraintHorizontal_bias="0.615"
-        android:onClick="printName"/>
+        android:layout_marginTop="16dp" />
 
-    <!-- Campo de entrada para pesquisa -->
+    <!-- Campo de pesquisa -->
     <EditText
         android:id="@+id/searchName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Pesquisar Nome"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="Pesquisar nome"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAdd"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button2"
-        android:layout_marginTop="16dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp" />
 
-    <!-- Botão para pesquisar dados no banco de dados -->
+    <!-- Botão para buscar nome -->
     <Button
-        android:id="@+id/searchButton"
+        android:id="@+id/buttonSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="PESQUISAR"
+        android:text="Buscar"
+        android:onClick="searchName"
+        app:layout_constraintTop_toBottomOf="@+id/searchName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchName"
-        android:onClick="searchName"/>
+        android:layout_marginTop="16dp" />
 
-    <!-- TextView para exibir "Nome" -->
-    <TextView
+    <!-- Botão para editar nome e idade -->
+    <Button
+        android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nome"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
+        android:text="Editar"
+        android:onClick="editName"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSearch"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button2"
-        app:layout_constraintVertical_bias="0.23" />
-
-    <!-- TextView para exibir "Idade" -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Idade"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@id/button2"
-        app:layout_constraintVertical_bias="0.23" />
-    <!-- TextView para exibir "Nome" -->
+        android:layout_marginTop="16dp" />
 
-    <!-- TextView para exibir "Idade" -->
+    <!-- TextView para exibir nome -->
+
+    <!-- TextView para exibir idade -->
+
+    <!-- Botão para exibir todos os registros -->
     <TextView
         android:id="@+id/Name"
-        android:layout_width="wrap_content"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
+        android:layout_marginTop="8dp"
+        android:text="Nome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.187"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button2"
-        app:layout_constraintVertical_bias="0.301" />
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
 
     <TextView
         android:id="@+id/Age"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Idade"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.812"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
+
+    <Button
+        android:id="@+id/buttonPrint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Exibir Todos"
+        android:onClick="printName"
+        app:layout_constraintTop_toBottomOf="@+id/Age"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@id/button2"
-        app:layout_constraintVertical_bias="0.301" />
+        android:layout_marginTop="24dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
